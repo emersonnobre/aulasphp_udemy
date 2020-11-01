@@ -40,8 +40,11 @@ $hierarquia = array(
                             //Inicio: Supervisor de suprimentos
                             array(
                                 'nome_cargo'=>'Supervisor de suprimentos'
-                            )
+                            ),
                             //Termino: Supervisor de suprimentos
+                            array(
+                                'nome_cargo'=>'Ludio comedor'
+                            )
                         )
                     )
                     //Termino: Gerente de compras
