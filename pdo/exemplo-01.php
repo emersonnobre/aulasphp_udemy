@@ -4,7 +4,7 @@
 $conn = new PDO("mysql:dbname=bancoteste;host=localhost", "root", "");
 
 //preparando o pedido
-$stmt = $conn->prepare("select * from user");
+$stmt = $conn->prepare("select * from tb_usuarios order by nome");
 
 //execução da query
 $stmt->execute();

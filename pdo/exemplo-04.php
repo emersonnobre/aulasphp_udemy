@@ -4,14 +4,14 @@
 $conn = new PDO("mysql:host=localhost;dbname=bancoteste", "root", "");
 
 //Comando para update (allterar dados)
-$stmt = $conn->prepare("UPDATE user SET name = :NAME, cpf = :CPF WHERE id = :ID");
+$stmt = $conn->prepare("UPDATE tb_usuarios SET nome = :NOME, senha = :SENHA WHERE idusuario = :ID");
 
 $name = "Tayane";
-$cpf = "akskdlal";
-$id = 11;
+$senha = "akskdlal";
+$id = 1;
 
-$stmt->bindParam(":NAME", $name);
-$stmt->bindParam(":CPF", $cpf);
+$stmt->bindParam(":NOME", $name);
+$stmt->bindParam(":SENHA", $senha);
 $stmt->bindParam(":ID", $id);
 
 $stmt->execute();
