@@ -1,63 +1,39 @@
 <?php
-// Cria uma classe chamada Sql que pega todos os dados presentes na classe PDO, nativa do php
+
 class Sql extends PDO {
 
-    //declaração da variável de conexão
-    private $conn;
+    private $con;
 
-    // Função que conecta o banco, como é um construtor, é executada assim que um objeto é criado
-    public function __construct() {
-
-        $this->conn = new PDO("mysql:local=localhost;dbname=bancoteste", "root", "");
-
+    public function __construct(){
+        $this->con = new PDO("mysql:dbname=bancoteste;host:localhost", "root", "");
     }
 
-    // Função que automatiza a configuração de vários parâmetros, utilizando o setParam()
-    private function setParams($statment, $parameters = array()) {
-
-        foreach ($parameters as $key => $value) {
-
-            $this->setParam($statment, $key, $value);
-
-        }
-
-    }
-
-    // Função que define e configura cada um dos parâmetros passados para o statment
-    private function setParam($statment, $key, $value) {
-
-        $statment->bindParam($key, $value);
-
-    }
-
-
-    // Função que executa a query e retorna seu resultado
-    public function query($rawQuery, $params = array()) {
-
-        //linha do prepare
-        $stmt = $this->conn->prepare($rawQuery);
-
-        //configurando os parâmetros utilizando a outra função
+    // Guarda a query passada para um statement de preparação e ajusta os parâmetros através de outras classes.
+    public function query($query, $params = array()){
+        $stmt = $this->con->prepare($query);
         $this->setParams($stmt, $params);
-        
-        //executa e retorna  a execução
         $stmt->execute();
 
         return $stmt;
-
     }
 
+    // Faz um laço percorrendo todos os itens do array de parâmetro, e para cada um chamada a função setParam.
+    private function setParams($stmt, $params = array()){
+        foreach ($params as $key => $value) {
+            $this->setParam($stmt, $key, $value);
+        }
+    }
 
-    // Função de select
-    public function select($rawQuery, $params = array()):array
-    {
-        $stmt = $this->query($rawQuery, $params);
+    // Seta um parâmetro do stmt.
+    private function setParam($stmt, $key, $value){
+        $stmt->bindParam($key, $value);
+    }
 
-        //retorna os dados coletados 
+    //select usando a query function
+    public function select($query, $params = array()){
+        $stmt = $this->query($query, $params);
         return $stmt->fetchAll(PDO::FETCH_ASSOC);
     }
-
-
-}
+} 
 
 ?>
