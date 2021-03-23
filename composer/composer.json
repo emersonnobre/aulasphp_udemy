@@ -1,0 +1,9 @@
+{
+    "name": "emersonnobre/comp",
+    "description": "Teste de composer para a aula de php7",
+    "type": "project",
+    "minimum-stability": "dev",
+    "require": {
+        "monolog/monolog": "1.0.*"
+    }
+}

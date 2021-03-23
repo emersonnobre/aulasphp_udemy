@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Template - Usando RainTPL</title>
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+        }
+
+        header{
+            background-color: black;
+            color: blanchedalmond;
+            width: 100%;
+            padding: 2rem 2rem;
+            text-align: center;
+        }
+
+        section {
+            margin: 3rem 7rem;
+        }
+
+        #title {
+            display: block;
+        }
+
+        #navigation {
+            display: block;
+            margin-top: 0.8rem;
+            min-width: 70%;
+        }
+
+        #navigation a {
+            text-decoration: none;
+            color: blanchedalmond;
+            padding: 0.2rem 3rem 0.2rem 3rem;
+            border-right: solid 1px blanchedalmond;
+
+        }
+
+        #navigation a:hover {
+            border-radius: 3px;
+            background-color: grey;
+            color: white;
+        }
+
+        .flex {
+            display: flex;
+        }
+
+        .flex-item-1 {
+            flex: 1;
+        }
+
+        .notice-box {
+            padding: 2rem;
+            border-radius: 3px;
+            box-shadow: rgb(37, 33, 33) 1px;
+            border: solid 1px black;
+        }
+        
+    </style>
+</head>
+<body>
+    <header>
+        <h1 id="title">{$title}</h1>
+        <nav id="navigation">
+            <a href="not.html">Notícias</a>
+            <a href="">Receitas</a>
+            <a href="">Contato</a>
+        </nav>
+    </header>
+    <section class="flex">
+        <div class="notice-box flex-item-1">
+            <h2>{$noticia1}</h2>
+        </div>
+        <div class="notice-box flex-item-1">
+            <h2>{$noticia2}</h2>
+        </div>
+        <div class="notice-box flex-item-1">
+            <h2>{$noticia3}</h2>
+        </div>
+    </section>
+</body>
+</html>
